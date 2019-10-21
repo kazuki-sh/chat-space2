@@ -24,11 +24,8 @@
       background-color: #2f3e51;
       height: 100vh;
       padding: $PaddingSide20;
-      &__first {
-        padding-top: 20px;
-        margin-bottom: 40px;
-      }
-      &__first,&__second {
+      &__content {
+        padding: 20px 0 40px;
         .LeftBody__GroupName {
           @include Fos_w_c (15px,bold,$ColorWhite);
           margin-bottom: 5px;
