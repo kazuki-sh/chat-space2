@@ -1,0 +1,11 @@
+.RightBody__first 
+  .RightBody__title
+    .RightBody__name
+      = message.user.name
+    .RightBody__date
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+  .RightBody__text
+    - if message.content.present?
+      %p.RightBody__content
+        = message.content
+    = image_tag message.image.url, class: 'RightBody__image' if message.image.present?
