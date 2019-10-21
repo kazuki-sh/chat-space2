@@ -8,7 +8,7 @@
       .LeftHeader__name
         = current_user.name
         .LeftHeader__icon
-          = link_to '#' do
+          = link_to new_group_path do
             = fa_icon 'edit', class: "LeftHeader__editLink"
           = link_to edit_user_path(current_user), class: "LeftHeader__cogLink" do
             = fa_icon 'cog'
