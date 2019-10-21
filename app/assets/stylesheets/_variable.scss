@@ -1,0 +1,24 @@
+$ColorWhite: #fff;
+$ColorBlue: #38aef0;
+$SizeMax: 100%;
+$Center: center;
+$PaddingSide20: 0 20px 0;
+$PaddingSide40: 0 40px 0;
+
+@mixin Position_Ab($top,$right){
+  position: absolute;
+  top: $top;
+  right: $right;
+}
+
+@mixin Fos_w_c($size,$weight,$color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin Fos_c($size,$color) {
+  font-size: $size;
+  color: $color;
+}
+

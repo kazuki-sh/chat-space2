@@ -1,0 +1,88 @@
+.ContentRight {
+  width: calc(100% - 300px);
+  .RightHeader {
+    height: 99px;
+    padding: $PaddingSide40;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eeeeee;
+    &__leftBox {
+      .RightHeader__name {
+        @include Fos_c(20px,#333);
+        margin: 35px 0 15px;
+      }
+      .RightHeader__member {
+        @include Fos_c(12px,#999);
+      }
+    }
+    &__editBtn {
+      height: 40px;
+      margin-top: 28px;
+      padding: $PaddingSide20;
+      line-height: 40px;
+      color: $ColorBlue;
+      border: 1px solid $ColorBlue;
+    }  
+  }
+  .RightBody {
+    height: calc(100vh - 100px);
+    background-color: #fafafa;
+    padding: $PaddingSide40;
+    &__first {
+      padding-top: 46px;
+      margin-bottom: 40px;
+    }
+    &__first, &__second {
+      .RightBody__title {
+        display: flex;
+        margin-bottom: 10px;
+          .RightBody__name {
+            @include Fos_w_c (16px,bold,#434A54);
+            margin-right: 10px;
+          }
+          .RightBody__date {
+            @include Fos_c(12px,#999);
+          }
+      }
+      .RightBody__text {
+        @include Fos_c(14px,#434A54);
+      }     
+    }
+  }
+  .RightFooter {
+    height: 100px;
+    padding: $PaddingSide40;
+    background-color: #ddd;
+    display: flex;
+    justify-content: $Center;
+    align-items: $Center;
+    form {
+      width: calc(100% - 100px);
+      position: relative;
+      .send-message {
+        width: $SizeMax;
+        height: 50px;
+        background-color: $ColorWhite;
+        font-size: 16px;
+      }
+      .send-message::placeholder {
+        color: #434A54;
+        padding-left: 10px;
+      }
+      .upload-label {
+        i.fa.fa-picture-o {
+          @include Position_Ab(19px,10px);
+        }
+      }
+    }
+    &__sendBtn {
+      width: 100px;
+      height: 50px;
+      background-color: $ColorBlue;
+      margin-left: 15px;
+      color: $ColorWhite;
+      line-height: 50px;
+      text-align: $Center;
+    }   
+  }
+}

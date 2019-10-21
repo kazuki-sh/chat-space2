@@ -1,0 +1,46 @@
+.Contents {
+  display: flex;
+  .ContentLeft {
+    width: 300px;
+    .LeftHeader {
+      height: 100px;
+      background-color: #253141;
+      padding: $PaddingSide20;
+      &__name {
+        @include Fos_w_c (16px,bold,$ColorWhite);
+        line-height: 100px;
+        position: relative;
+        .LeftHeader__icon {
+          @include Position_Ab(0,0);
+          .LeftHeader__editLink, .LeftHeader__cogLink {
+            text-decoration: none;
+            color: $ColorWhite;
+          }
+        }
+      } 
+    }
+  
+    .LeftBody {
+      background-color: #2f3e51;
+      height: 100vh;
+      padding: $PaddingSide20;
+      &__first {
+        padding-top: 20px;
+        margin-bottom: 40px;
+      }
+      &__first,&__second {
+        .LeftBody__GroupName {
+          @include Fos_w_c (15px,bold,$ColorWhite);
+          margin-bottom: 5px;
+        }
+        .LeftBody__GroupMessage {
+          @include Fos_w_c (11px,bold,$ColorWhite);
+        }
+      }
+    }
+  }
+
+
+
+  
+}
