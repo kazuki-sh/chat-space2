@@ -53,14 +53,12 @@
     height: 100px;
     padding: $PaddingSide40;
     background-color: #ddd;
-    
-    .form {
-      // display: flex;
+    display: flex;
       // justify-content: $Center;
       // align-items: $Center;
+    .form {
       width: calc(100% - 100px);
       position: relative;
-      
       &__message {
         width: $SizeMax;
         height: 50px;
