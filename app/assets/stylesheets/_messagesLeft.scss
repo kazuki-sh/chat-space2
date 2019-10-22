@@ -26,18 +26,18 @@
       padding: $PaddingSide20;
       &__content {
         padding: 20px 0 40px;
-        .LeftBody__GroupName {
-          @include Fos_w_c (15px,bold,$ColorWhite);
-          margin-bottom: 5px;
-        }
-        .LeftBody__GroupMessage {
-          @include Fos_w_c (11px,bold,$ColorWhite);
-        }
-      }
+        a {
+          display: block; 
+          margin-bottom: 40px;
+          .LeftBody__GroupName {
+            @include Fos_w_c (15px,bold,$ColorWhite);
+            margin-bottom: 5px;
+          }
+          .LeftBody__GroupMessage {
+            @include Fos_w_c (11px,bold,$ColorWhite);
+          }
+        }  
+      }  
     }
   }
-
-
-
-  
 }

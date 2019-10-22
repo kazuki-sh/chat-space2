@@ -50,39 +50,45 @@
     }
   }
   .RightFooter {
-    height: 100px;
-    padding: $PaddingSide40;
+    height: 60px;
+    padding: 20px 40px;
     background-color: #ddd;
-    display: flex;
-    justify-content: $Center;
-    align-items: $Center;
     .form {
-      width: calc(100% - 100px);
-      position: relative;
-      .send-message {
-        width: $SizeMax;
-        height: 50px;
-        background-color: $ColorWhite;
-        font-size: 16px;
-      }
-      .send-message::placeholder {
-        color: #434A54;
-        padding-left: 10px;
-      }
-      .upload-label {
-        i.fa.fa-picture-o {
-          @include Position_Ab(19px,10px);
+      .new_message {
+      display: flex;
+      align-items: center;
+      width: 100%;
+        .form__left {
+          width: calc(100% - 115px);
+          position: relative;
+          .form__message {
+            width: $SizeMax;
+            background-color: $ColorWhite;
+            height: 50px;
+          }
+          .form__message::placeholder {
+            color: #434A54;
+            font-size: 16px;
+            padding-left: 10px;
+          }
+          .form__UploadLabel {
+            i.fa.fa-picture-o {
+              @include Position_Ab(19px,10px);
+            }
+          }
+        }
+        .form__right {
+          .form__submit {
+            width: 100px;
+            height: 50px;
+            background-color: $ColorBlue;
+            margin-left: 15px;
+            color: $ColorWhite;
+            line-height: 50px;
+            text-align: $Center;
+          }   
         }
       }
-    }
-    &__sendBtn {
-      width: 100px;
-      height: 50px;
-      background-color: $ColorBlue;
-      margin-left: 15px;
-      color: $ColorWhite;
-      line-height: 50px;
-      text-align: $Center;
-    }   
+    }  
   }
 }
