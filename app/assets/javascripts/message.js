@@ -45,8 +45,7 @@ $(function(){
       var image = buildIMG(data);
       $('.RightBody').append(html);
       $('.RightBody__first:last').append(image);
-      $('#message_content').val('');
-      $('#message_image').val('');
+      $('form')[0].reset();
       $('.RightBody').animate({ scrollTop: $('.RightBody')[0].scrollHeight});
       $('.form__submit').removeAttr('disabled');
     })
