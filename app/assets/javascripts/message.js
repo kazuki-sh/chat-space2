@@ -35,7 +35,7 @@ $(function(){
       $('.RightBody').append(html);
       $('#message_content').val('');
       $('.RightBody').animate({ scrollTop: $('.RightBody')[0].scrollHeight});
-
+      $('.form__submit').removeAttr('disabled');
     })
     .fail(function(){
       alert('error');
