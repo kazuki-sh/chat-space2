@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
       render :index
     end
     respond_to do |format|
-      format.html { redirect_to tgroup_messages_path(@group)  }
+      format.html { redirect_to group_messages_path(@group)  }
       format.json
     end
   end
