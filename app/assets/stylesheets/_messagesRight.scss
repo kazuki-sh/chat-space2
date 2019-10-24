@@ -75,6 +75,9 @@
             i.fa.fa-picture-o {
               @include Position_Ab(19px,10px);
             }
+            .hidden {
+              display: none;
+            }
           }
         }
         .form__right {
