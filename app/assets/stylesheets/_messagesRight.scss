@@ -33,7 +33,7 @@
       padding-top: 46px;
       margin-bottom: 40px;
     }
-    &__first, &__second {
+    &__first {
       .RightBody__title {
         display: flex;
         margin-bottom: 10px;
@@ -48,6 +48,9 @@
       .RightBody__text {
         @include Fos_c(14px,#434A54);
       }     
+      .RightBody__content {
+        margin-bottom: 10px;
+      }
     }
   }
   .RightFooter {

@@ -3,10 +3,10 @@ $(function(){
     var html = `<div class="RightBody__first">
                   <div class="RightBody__title">
                     <div class="RightBody__name">
-                    ${message.group_name}
+                    ${message.user_name}
                     </div>
                     <div class="RightBody__date">
-                    ${message.created_at}
+                    ${message.time}
                     </div>
                   </div>
                   <div class="RightBody__text">
@@ -16,6 +16,16 @@ $(function(){
                   </div>
                 </div>`
     return html;
+    
+  }
+  function buildIMG(message) {
+    var image = '';
+    if(message.image.url !== null) {
+      image = `<img class="RightBody__image" src="${message.image.url}"></img>`
+    } else {
+      image = '';
+    }
+    return image;
   }
 
   $('.new_message').on('submit', function(e){
@@ -32,8 +42,11 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      var image = buildIMG(data);
       $('.RightBody').append(html);
+      $('.RightBody__first:last').append(image);
       $('#message_content').val('');
+      $('#message_image').val('');
       $('.RightBody').animate({ scrollTop: $('.RightBody')[0].scrollHeight});
       $('.form__submit').removeAttr('disabled');
     })
