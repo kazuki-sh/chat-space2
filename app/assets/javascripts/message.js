@@ -11,5 +11,11 @@ $(function(){
       processData: false,
       contentType: false
     })
+    .done(function(){
+
+    })
+    .fail(function(){
+      
+    })
   });
 });
