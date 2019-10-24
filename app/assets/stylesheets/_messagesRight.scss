@@ -1,5 +1,6 @@
 .ContentRight {
   width: calc(100% - 300px);
+  height: 100vh;
   .RightHeader {
     height: 99px;
     padding: $PaddingSide40;
@@ -25,9 +26,9 @@
     }  
   }
   .RightBody {
-    height: calc(100vh - 100px);
     background-color: #fafafa;
     padding: $PaddingSide40;
+    height: calc(100vh - 190px);
     overflow: auto;
     &__first {
       padding-top: 46px;
@@ -54,7 +55,8 @@
     }
   }
   .RightFooter {
-    height: 60px;
+    box-sizing: border-box;
+    height: 90px;
     padding: 20px 40px;
     background-color: #ddd;
     .form {
@@ -68,7 +70,7 @@
           .form__message {
             width: $SizeMax;
             background-color: $ColorWhite;
-            height: 50px;
+            height: 46px;
           }
           .form__message::placeholder {
             color: #434A54;
@@ -99,3 +101,4 @@
     }  
   }
 }
+
