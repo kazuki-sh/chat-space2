@@ -3,15 +3,15 @@ $(function(){
     var html = `<div class="RightBody__first">
                   <div class="RightBody__title">
                     <div class="RightBody__name">
-                      
+                    ${message.group_name}
                     </div>
                     <div class="RightBody__date">
-                      2019/10/24 00:15
+                    ${message.created_at}
                     </div>
                   </div>
                   <div class="RightBody__text">
                     <p class="RightBody__content">
-                    aaa
+                    ${message.content}
                     </p>
                   </div>
                 </div>`
@@ -32,6 +32,8 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      $('.RightBody').append(html)
+      $('#message_content').val('')
     })
     .fail(function(){
 
