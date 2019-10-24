@@ -36,7 +36,7 @@ $(function(){
       $('#message_content').val('')
     })
     .fail(function(){
-
+      alert('error');
     })
   });
 });
