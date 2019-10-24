@@ -32,8 +32,10 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.RightBody').append(html)
-      $('#message_content').val('')
+      $('.RightBody').append(html);
+      $('#message_content').val('');
+      $('.RightBody').animate({ scrollTop: $('.RightBody')[0].scrollHeight});
+
     })
     .fail(function(){
       alert('error');

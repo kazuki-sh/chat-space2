@@ -28,6 +28,7 @@
     height: calc(100vh - 100px);
     background-color: #fafafa;
     padding: $PaddingSide40;
+    overflow: auto;
     &__first {
       padding-top: 46px;
       margin-bottom: 40px;
