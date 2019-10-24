@@ -19,12 +19,7 @@ $(function(){
     
   }
   function buildIMG(message) {
-    var image = '';
-    if(message.image.url !== null) {
-      image = `<img class="RightBody__image" src="${message.image.url}"></img>`
-    } else {
-      image = '';
-    }
+    message.image.url !== null ? image = `<img class="RightBody__image" src="${message.image.url}"></img>` : image = '';
     return image;
   }
 
