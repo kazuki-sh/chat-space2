@@ -17,7 +17,7 @@ $(function(){
                 </div>`
     return html;
   }
-  
+
   function buildIMG(message) {
     image = message.image.url !== null ? `<img class="RightBody__image" src="${message.image.url}"></img>` :  ''
     return image;
