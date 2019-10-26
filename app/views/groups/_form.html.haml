@@ -23,9 +23,13 @@
     .chat-group-form__field--left
       = f.label "チャットメンバー", class: "chat-group-form__label"
     .chat-group-form__field--right
-      / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
       
-      / この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときにも使用します
+      #chat-group-users.js-add-user
+        .chat-group-user.clearfix.js-chat-member#chat-group-user-8
+          %input{name: "group[user_ids][]", type: "hidden", value: current_user.id}
+          %p.chat-group-user__name= current_user.name
+
+      
   .chat-group-form__field
     .chat-group-form__field--left
     .chat-group-form__field--right
