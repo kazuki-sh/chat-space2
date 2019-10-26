@@ -50,9 +50,9 @@ $(function(){
     })
 
     var reloadMessage = function() {
-      last_message_id = 
+      last_message_id = $('RightBody__content').data('message')
       $.ajax({
-        url: 
+        url: '/groups/:group_id/api/messages',
         type: 'get',
         dataType: 'json',
         data: {id: last_message_id}
