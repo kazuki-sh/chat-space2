@@ -1,4 +1,5 @@
 $(function(){
+
   function buildHTML(message){
     var html = `<div class="RightBody__first">
                   <div class="RightBody__title">

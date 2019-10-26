@@ -8,9 +8,13 @@
           = @group.name
 
         .RightHeader__member
-          =current_user.name
-      .RightHeader__editBtn
-        Edit
+          Member :
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
+          
+      = link_to edit_group_path(@group), class: "EditBtn" do
+        .RightHeader__editBtn
+          Edit 
         
       
     .RightBody

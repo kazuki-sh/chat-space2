@@ -16,14 +16,17 @@
         @include Fos_c(12px,#999);
       }
     }
-    &__editBtn {
-      height: 40px;
-      margin-top: 28px;
-      padding: $PaddingSide20;
-      line-height: 40px;
-      color: $ColorBlue;
-      border: 1px solid $ColorBlue;
-    }  
+    .EditBtn {
+      text-decoration: none;
+      .RightHeader__editBtn {
+        height: 40px;
+        margin-top: 28px;
+        padding: $PaddingSide20;
+        line-height: 40px;
+        color: $ColorBlue;
+        border: 1px solid $ColorBlue;
+      }  
+    }
   }
   .RightBody {
     background-color: #fafafa;
