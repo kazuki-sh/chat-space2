@@ -48,5 +48,21 @@ $(function(){
     .fail(function(){
       alert('error');
     })
+
+    var reloadMessage = function() {
+      last_message_id = 
+      $.ajax({
+        url: 
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages) {
+        console.log('success');
+      })
+      .fail(function(){
+        console.log('error');
+      });
+    };
   });
 });
