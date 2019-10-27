@@ -19,7 +19,7 @@ $(function(){
                     </div>
                   </div>`
     } else if (message.content) {
-      var html = `<div class="RightBody__first" data-id= "${message.id}">
+      var html = `<div class="RightBody__first">
                     <div class="RightBody__title">
                       <div class="RightBody__name">
                       ${message.user_name}
@@ -29,13 +29,13 @@ $(function(){
                       </div>
                     </div>
                     <div class="RightBody__text">
-                      <p class="RightBody__content">
+                      <p class="RightBody__content" data-id= "${message.id}">
                       ${message.content}
                       </p>
                     </div>
                   </div>`
     } else if (message.image.url) {
-      var html = `<div class="RightBody__first" data-id= "${message.id}">
+      var html = `<div class="RightBody__first">
                     <div class="RightBody__title">
                       <div class="RightBody__name">
                       ${message.user_name}
@@ -56,7 +56,7 @@ $(function(){
     last_message_id = $('.RightBody__content:last').data('id');
     console.log(last_message_id);
     $.ajax({
-      url: '/groups//api/messages',
+      url: '/groups/#{:group_id}/api/messages',
       type: 'GET',
       dataType: 'json',
       data: {id: last_message_id}
@@ -64,7 +64,7 @@ $(function(){
     .done(function(messages) {
       var insertHTML = '';
       messages.forEach(function(message){
-        insertHTML = `<div class="RightBody__first" data-id= "${message.id}">
+        insertHTML = `<div class="RightBody__first">
                       <div class="RightBody__title">
                         <div class="RightBody__name">
                         ${message.user_name}
@@ -74,7 +74,7 @@ $(function(){
                         </div>
                       </div>
                       <div class="RightBody__text">
-                        <p class="RightBody__content">
+                        <p class="RightBody__content" data-id= "${message.id}">
                         ${message.content}
                         </p>
                         <img class="RightBody__image" src="${message.image.url}"></img>
