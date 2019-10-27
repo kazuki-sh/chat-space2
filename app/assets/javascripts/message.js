@@ -2,7 +2,7 @@ $(function(){
 
   var buildHTML = function (message){
     if(message.content && message.image.url) {
-      var html = `<div class="RightBody__first" data-message= "${message.id}">
+      var html = `<div class="RightBody__first" data-id= "${message.id}">
                     <div class="RightBody__title">
                       <div class="RightBody__name">
                       ${message.user_name}
@@ -19,7 +19,7 @@ $(function(){
                     </div>
                   </div>`
     } else if (message.content) {
-      var html = `<div class="RightBody__first" data-message= "${message.id}">
+      var html = `<div class="RightBody__first" data-id= "${message.id}">
                     <div class="RightBody__title">
                       <div class="RightBody__name">
                       ${message.user_name}
@@ -35,7 +35,7 @@ $(function(){
                     </div>
                   </div>`
     } else if (message.image.url) {
-      var html = `<div class="RightBody__first" data-message= "${message.id}">
+      var html = `<div class="RightBody__first" data-id= "${message.id}">
                     <div class="RightBody__title">
                       <div class="RightBody__name">
                       ${message.user_name}
@@ -50,6 +50,42 @@ $(function(){
                   </div>`
     };
     return html;
+  };
+
+  var reloadMessages = function() {
+    last_message_id = $('.RightBody__content:last').data('id');
+    console.log(last_message_id);
+    $.ajax({
+      url: '/groups//api/messages',
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      messages.forEach(function(message){
+        insertHTML = `<div class="RightBody__first" data-id= "${message.id}">
+                      <div class="RightBody__title">
+                        <div class="RightBody__name">
+                        ${message.user_name}
+                        </div>
+                        <div class="RightBody__date">
+                        ${message.time}
+                        </div>
+                      </div>
+                      <div class="RightBody__text">
+                        <p class="RightBody__content">
+                        ${message.content}
+                        </p>
+                        <img class="RightBody__image" src="${message.image.url}"></img>
+                      </div>
+                    </div>`
+        $('.RightBody').append(insertHTML);
+      })
+    })
+    .fail(function(){
+      console.log('error');
+    });
   };
 
   $('.new_message').on('submit', function(e){
@@ -70,31 +106,11 @@ $(function(){
       $('form')[0].reset();
       $('.RightBody').animate({ scrollTop: $('.RightBody')[0].scrollHeight});
       $('.form__submit').removeAttr('disabled');
+      
     })
     .fail(function(){
       alert('error');
     })
-
-    var reloadMessages = function() {
-      last_message_id = $('RightBody__content').data('message')
-      $.ajax({
-        url: '/groups/#{group.id}/api/messages',
-        type: 'get',
-        dataType: 'json',
-        data: {id: last_message_id}
-      })
-      .done(function(messages) {
-        var insertHTML = '';
-        messages.forEach(function(message){
-          insertHTML = buildHTML(message);
-          $('.RightBody').append(insertHTML);
-        });
-        
-
-      })
-      .fail(function(){
-        console.log('error');
-      });
-    };
   });
+  setInterval(reloadMessages, 5000);
 });
