@@ -75,16 +75,22 @@ $(function(){
       alert('error');
     })
 
-    var reloadMessage = function() {
+    var reloadMessages = function() {
       last_message_id = $('RightBody__content').data('message')
       $.ajax({
-        url: '/groups/:group_id/api/messages',
+        url: '/groups/#{group.id}/api/messages',
         type: 'get',
         dataType: 'json',
         data: {id: last_message_id}
       })
       .done(function(messages) {
-        console.log('success');
+        var insertHTML = '';
+        messages.forEach(function(message){
+          insertHTML = buildHTML(message);
+          $('.RightBody').append(insertHTML);
+        });
+        
+
       })
       .fail(function(){
         console.log('error');
