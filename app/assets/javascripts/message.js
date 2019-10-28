@@ -54,8 +54,12 @@ $(function(){
 
   var reloadMessages = function() {
     last_message_id = $('.RightBody__first:last').data('id');
+    groupId = $('.RightBody').data('group-id');
+    first_url = '/groups/';
+    second_url = '/api/messages';
+    
     $.ajax({
-      url: '/groups/40/api/messages',
+      url: first_url + groupId + second_url,
       type: 'GET',
       dataType: 'json',
       data: {id: last_message_id}
@@ -95,7 +99,7 @@ $(function(){
       $('.form__submit').removeAttr('disabled');
     })
     .fail(function(){
-      alert('error');
+      window.alert('error');
     })
   });
   setInterval(reloadMessages, 5000);
