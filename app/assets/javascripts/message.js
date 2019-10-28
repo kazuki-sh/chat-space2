@@ -2,7 +2,7 @@ $(function(){
 
   var buildHTML = function (message){
     if(message.content && message.image.url) {
-      var html = `<div class="RightBody__first" data-id= "${message.id}">
+      var html = `<div class="RightBody__first" data-id="${message.id}">
                     <div class="RightBody__title">
                       <div class="RightBody__name">
                       ${message.user_name}
@@ -19,7 +19,7 @@ $(function(){
                     </div>
                   </div>`
     } else if (message.content) {
-      var html = `<div class="RightBody__first">
+      var html = `<div class="RightBody__first" data-id="${message.id}">
                     <div class="RightBody__title">
                       <div class="RightBody__name">
                       ${message.user_name}
@@ -29,13 +29,13 @@ $(function(){
                       </div>
                     </div>
                     <div class="RightBody__text">
-                      <p class="RightBody__content" data-id= "${message.id}">
+                      <p class="RightBody__content">
                       ${message.content}
                       </p>
                     </div>
                   </div>`
     } else if (message.image.url) {
-      var html = `<div class="RightBody__first">
+      var html = `<div class="RightBody__first" data-id="${message.id}">
                     <div class="RightBody__title">
                       <div class="RightBody__name">
                       ${message.user_name}
@@ -53,7 +53,7 @@ $(function(){
   };
 
   var reloadMessages = function() {
-    last_message_id = $('.RightBody__content:last').data('id');
+    last_message_id = $('.RightBody__first:last').data('id');
     $.ajax({
       url: '/groups/40/api/messages',
       type: 'GET',
@@ -65,8 +65,11 @@ $(function(){
       messages.forEach(function(message){
         insertHTML = buildHTML(message)
         $('.RightBody').append(insertHTML);
+        var target = $('.RightBody__first:last');
+        var position = target.offset().top + $('.RightBody').scrollTop();
+        $('.RightBody').animate({scrollTop: position});
+        })
       })
-    })
     .fail(function(){
       console.log('error');
     });
@@ -90,7 +93,6 @@ $(function(){
       $('form')[0].reset();
       $('.RightBody').animate({ scrollTop: $('.RightBody')[0].scrollHeight});
       $('.form__submit').removeAttr('disabled');
-      
     })
     .fail(function(){
       alert('error');

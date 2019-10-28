@@ -1,4 +1,4 @@
-.RightBody__first 
+.RightBody__first{"data-id": "#{message.id}"}
   .RightBody__title
     .RightBody__name
       = message.user.name
@@ -6,6 +6,6 @@
       = message.created_at.strftime("%Y/%m/%d %H:%M")
   .RightBody__text
     - if message.content.present?
-      %p.RightBody__content{"data-id": "#{message.id}"}
+      %p.RightBody__content
         = message.content
     = image_tag message.image.url, class: 'RightBody__image' if message.image.present?
