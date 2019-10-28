@@ -1,56 +1,28 @@
 $(function(){
 
   var buildHTML = function (message){
-    if(message.content && message.image.url) {
-      var html = `<div class="RightBody__first" data-id="${message.id}">
-                    <div class="RightBody__title">
-                      <div class="RightBody__name">
-                      ${message.user_name}
-                      </div>
-                      <div class="RightBody__date">
-                      ${message.time}
-                      </div>
+    var html = `<div class="RightBody__first" data-id="${message.id}">
+                  <div class="RightBody__title">
+                    <div class="RightBody__name">
+                    ${message.user_name}
                     </div>
-                    <div class="RightBody__text">
-                      <p class="RightBody__content">
-                      ${message.content}
-                      </p>
-                      <img class="RightBody__image" src="${message.image.url}"></img>
+                    <div class="RightBody__date">
+                    ${message.time}
                     </div>
-                  </div>`
-    } else if (message.content) {
-      var html = `<div class="RightBody__first" data-id="${message.id}">
-                    <div class="RightBody__title">
-                      <div class="RightBody__name">
-                      ${message.user_name}
-                      </div>
-                      <div class="RightBody__date">
-                      ${message.time}
-                      </div>
-                    </div>
-                    <div class="RightBody__text">
-                      <p class="RightBody__content">
-                      ${message.content}
-                      </p>
-                    </div>
-                  </div>`
-    } else if (message.image.url) {
-      var html = `<div class="RightBody__first" data-id="${message.id}">
-                    <div class="RightBody__title">
-                      <div class="RightBody__name">
-                      ${message.user_name}
-                      </div>
-                      <div class="RightBody__date">
-                      ${message.time}
-                      </div>
-                    </div>
-                    <div class="RightBody__text">
-                      <img class="RightBody__image" src="${message.image.url}"></img>
-                    </div>
-                  </div>`
-    };
+                  </div>
+                  <div class="RightBody__text">
+                    <p class="RightBody__content">
+                    ${message.content}
+                    </p>
+                  </div>
+                </div>`
     return html;
   };
+
+  var buildIMG = function(message) {
+    image = message.image.url !== null ? `<img class="RightBody__image" src="${message.image.url}"></img>` :  '';
+    return image;
+  }
 
   var reloadMessages = function() {
     var last_message_id = $('.RightBody__first:last').data('id');
@@ -65,8 +37,10 @@ $(function(){
     .done(function(messages) {
       var insertHTML = '';
       messages.forEach(function(message){
-        insertHTML = buildHTML(message)
+        insertHTML = buildHTML(message);
+        insertIMG = buildIMG(message);
         $('.RightBody').append(insertHTML);
+        $('.RightBody__first:last').append(insertIMG);
         var target = $('.RightBody__first:last');
         var position = target.offset().top + $('.RightBody').scrollTop();
         $('.RightBody').animate({scrollTop: position});
@@ -91,7 +65,9 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      var image = buildIMG(data);
       $('.RightBody').append(html);
+      $('.RightBody__first:last').append(image);
       $('form')[0].reset();
       $('.RightBody').animate({ scrollTop: $('.RightBody')[0].scrollHeight});
       $('.form__submit').removeAttr('disabled');
@@ -105,8 +81,8 @@ $(function(){
   var group_id = $('.RightBody').data('group-id');
   var http = 'http://localhost:3000';
   var first_url = '/groups/';
-  var second_url = '/messages' 
-  var  message_list_url = http + first_url + group_id + second_url;
+  var second_url = '/messages';
+  var message_list_url = http + first_url + group_id + second_url;
   if(current_url == message_list_url) {
     setInterval(reloadMessages, 5000);
   } 
