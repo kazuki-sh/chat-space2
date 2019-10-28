@@ -53,13 +53,11 @@ $(function(){
   };
 
   var reloadMessages = function() {
-    last_message_id = $('.RightBody__first:last').data('id');
-    groupId = $('.RightBody').data('group-id');
-    first_url = '/groups/';
-    second_url = '/api/messages';
+    var last_message_id = $('.RightBody__first:last').data('id');
+    var api_url = '/api/messages';
     
     $.ajax({
-      url: first_url + groupId + second_url,
+      url: first_url + group_id + api_url,
       type: 'GET',
       dataType: 'json',
       data: {id: last_message_id}
@@ -102,5 +100,14 @@ $(function(){
       window.alert('error');
     })
   });
-  setInterval(reloadMessages, 5000);
+
+  var current_url = location.href;
+  var group_id = $('.RightBody').data('group-id');
+  var http = 'http://localhost:3000';
+  var first_url = '/groups/';
+  var second_url = '/messages' 
+  var  message_list_url = http + first_url + group_id + second_url;
+  if(current_url == message_list_url) {
+    setInterval(reloadMessages, 5000);
+  } 
 });
