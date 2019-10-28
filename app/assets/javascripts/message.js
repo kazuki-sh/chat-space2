@@ -73,7 +73,7 @@ $(function(){
         })
       })
     .fail(function(){
-      console.log('error');
+      window.alert('error');
     });
   };
 
