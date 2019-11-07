@@ -27,6 +27,7 @@ $(function(){
   var reloadMessages = function() {
     var last_message_id = $('.RightBody__first:last').data('id');
     var api_url = '/api/messages';
+    console.log(last_message_id);
     
     $.ajax({
       url: first_url + group_id + api_url,
