@@ -3,7 +3,7 @@
     .RightBody__name
       = message.user.name
     .RightBody__date
-      = message.created_at.strftime("%Y/%m/%d %H:%M")
+      = message.created_at.strftime("%Y/%m/%d(%a) %H:%M:%S")
   .RightBody__text
     - if message.content.present?
       %p.RightBody__content
