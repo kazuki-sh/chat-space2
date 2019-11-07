@@ -74,6 +74,7 @@ $(function(){
     })
     .fail(function(){
       window.alert('error');
+      $('.form__submit').removeAttr('disabled');
     })
   });
 
@@ -87,3 +88,5 @@ $(function(){
     setInterval(reloadMessages, 5000);
   } 
 });
+
+
