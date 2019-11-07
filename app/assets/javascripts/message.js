@@ -76,7 +76,7 @@ $(function(){
     })
     .fail(function(){
       window.alert('error');
-      $('.form__submit').removeAttr('disabled');
+      // $('.form__submit').removeAttr('disabled');
     })
   });
 
