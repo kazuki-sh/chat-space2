@@ -27,7 +27,6 @@ $(function(){
   var reloadMessages = function() {
     var last_message_id = $('.RightBody__first:last').data('id');
     var api_url = '/api/messages';
-    console.log(last_message_id);
     
     $.ajax({
       url: first_url + group_id + api_url,
@@ -56,7 +55,6 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    console.log(url);
     $.ajax({
       type: 'POST',
       url:url,
@@ -76,12 +74,13 @@ $(function(){
     })
     .fail(function(){
       window.alert('error');
+      $('.form__submit').removeAttr('disabled');
     })
   });
 
   var current_url = location.href;
   var group_id = $('.RightBody').data('group-id');
-  var http = 'http://localhost:3000';
+  var http = 'http://13.115.172.102';
   var first_url = '/groups/';
   var second_url = '/messages';
   var message_list_url = http + first_url + group_id + second_url;
